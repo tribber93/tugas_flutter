@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               child: const Text('Ke Halaman 2'),
               onPressed: () {
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     arguments: Data('$_counter', 'Halaman Kedua'));
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               child: const Text('Ke Halaman 3'),
               onPressed: () {
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     arguments: Data('$_counter', 'Halaman Ketiga'));
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
