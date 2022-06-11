@@ -49,35 +49,40 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Counter App menggunakan State Management Default Flutter',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Ke Halaman 2'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/kedua',
-                    arguments: Data('$_counter', 'Halaman Kedua'));
-              },
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              child: const Text('Ke Halaman 3'),
-              onPressed: () {
-                Navigator.pushNamed(context, '/ketiga',
-                    arguments: Data('$_counter', 'Halaman Ketiga'));
-              },
-            ),
-            const SizedBox(height: 20),
-          ],
+      body: Container(
+        margin: EdgeInsets.all(15.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'Counter App menggunakan State Management Default Flutter',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              const SizedBox(height: 14),
+              ElevatedButton(
+                child: const Text('Ke Halaman 2'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/kedua',
+                      arguments: Data('$_counter', 'Halaman Kedua'));
+                },
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                child: const Text('Ke Halaman 3'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/ketiga',
+                      arguments: Data('$_counter', 'Halaman Ketiga'));
+                },
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
