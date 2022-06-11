@@ -27,13 +27,14 @@ class Home extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Counter App menggunakan State Management Getx'),
-              SizedBox(height: 20),
+              const Text('Counter App menggunakan State Management Getx'),
+              const SizedBox(height: 20),
               ElevatedButton(
-                  child: Text("Go to Kedua"), onPressed: () => Get.to(Kedua())),
-              SizedBox(height: 20),
+                  child: const Text("Go to Kedua"),
+                  onPressed: () => Get.to(Kedua())),
+              const SizedBox(height: 20),
               ElevatedButton(
-                  child: Text("Go to Ketiga"),
+                  child: const Text("Go to Ketiga"),
                   onPressed: () => Get.to(Ketiga())),
             ],
           ),
@@ -55,7 +56,7 @@ class Kedua extends StatelessWidget {
         body: Center(
             child: Text(
           "${c.count}",
-          style: TextStyle(fontSize: 50, color: Colors.amber),
+          style: const TextStyle(fontSize: 50, color: Colors.amber),
         )));
   }
 }
@@ -72,7 +73,7 @@ class Ketiga extends StatelessWidget {
         body: Center(
             child: Text(
           "${c.count}",
-          style: TextStyle(fontSize: 50, color: Colors.green),
+          style: const TextStyle(fontSize: 50, color: Colors.green),
         )));
   }
 }
