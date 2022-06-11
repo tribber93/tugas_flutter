@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,20 +25,27 @@ class Home extends StatelessWidget {
         appBar: AppBar(title: Obx(() => Text("Klik: ${c.count}"))),
 
         // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text('Counter App menggunakan State Management Getx'),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  child: const Text("-> Kedua"),
-                  onPressed: () => Get.to(Kedua())),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  child: const Text("-> Ketiga"),
-                  onPressed: () => Get.to(Ketiga())),
-            ],
+        body: Container(
+          margin: EdgeInsets.all(15.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Counter App menggunakan State Management Getx',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 18),
+                ElevatedButton(
+                    child: const Text("-> Kedua"),
+                    onPressed: () => Get.to(Kedua())),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                    child: const Text("-> Ketiga"),
+                    onPressed: () => Get.to(Ketiga())),
+              ],
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
