@@ -30,11 +30,11 @@ class Home extends StatelessWidget {
               const Text('Counter App menggunakan State Management Getx'),
               const SizedBox(height: 20),
               ElevatedButton(
-                  child: const Text("Go to Kedua"),
+                  child: const Text("-> Kedua"),
                   onPressed: () => Get.to(Kedua())),
               const SizedBox(height: 20),
               ElevatedButton(
-                  child: const Text("Go to Ketiga"),
+                  child: const Text("-> Ketiga"),
                   onPressed: () => Get.to(Ketiga())),
             ],
           ),
