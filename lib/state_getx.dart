@@ -1,12 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() => runApp(GetMaterialApp(
-      title: 'Tugas Pertemuan 8',
-      debugShowCheckedModeBanner: false,
       home: Home(),
+      debugShowCheckedModeBanner: false,
     ));
 
 class Controller extends GetxController {
@@ -14,75 +11,109 @@ class Controller extends GetxController {
   increment() => count++;
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    HalamanSatu(),
+    HalamanDua(),
+    HalamanTiga(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(context) {
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
     final Controller c = Get.put(Controller());
 
     return Scaffold(
-        // Use Obx(()=> to update Text() whenever count is changed.
-        appBar: AppBar(title: Obx(() => Text("Klik: ${c.count}"))),
+      // Use Obx(()=> to update Text() whenever count is changed.
+      appBar:
+          AppBar(title: Text("Counter App menggunakan State Management Getx")),
 
-        // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
-        body: Container(
-          margin: EdgeInsets.all(15.0),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Counter App menggunakan State Management Getx',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 18),
-                ElevatedButton(
-                    child: const Text("-> Kedua"),
-                    onPressed: () => Get.to(Kedua())),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                    child: const Text("-> Ketiga"),
-                    onPressed: () => Get.to(Ketiga())),
-              ],
-            ),
+      // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add), onPressed: c.increment));
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
+      floatingActionButton: _selectedIndex == 0
+          ? FloatingActionButton(child: Icon(Icons.add), onPressed: c.increment)
+          : null,
+    );
+    ;
   }
 }
 
-class Kedua extends StatelessWidget {
+class HalamanSatu extends StatelessWidget {
   // You can ask Get to find a Controller that is being used by another page and redirect you to it.
   final Controller c = Get.find();
 
   @override
   Widget build(context) {
     // Access the updated count variable
-    return Scaffold(
-        appBar: AppBar(title: Text("Halaman Kedua")),
-        body: Center(
-            child: Text(
-          "${c.count}",
-          style: const TextStyle(fontSize: 50, color: Colors.amber),
-        )));
+    return Center(
+        child: Obx(() => Text(
+              "${c.count}",
+              style: TextStyle(fontSize: 50, color: Colors.red),
+            )));
   }
 }
 
-class Ketiga extends StatelessWidget {
+class HalamanDua extends StatelessWidget {
   // You can ask Get to find a Controller that is being used by another page and redirect you to it.
   final Controller c = Get.find();
 
   @override
   Widget build(context) {
     // Access the updated count variable
-    return Scaffold(
-        appBar: AppBar(title: Text("Halaman Ketiga")),
-        body: Center(
-            child: Text(
-          "${c.count}",
-          style: const TextStyle(fontSize: 50, color: Colors.green),
-        )));
+    return Center(
+        child: Text(
+      "${c.count}",
+      style: TextStyle(fontSize: 50, color: Colors.amberAccent),
+    ));
+  }
+}
+
+class HalamanTiga extends StatelessWidget {
+  // You can ask Get to find a Controller that is being used by another page and redirect you to it.
+  final Controller c = Get.find();
+
+  @override
+  Widget build(context) {
+    // Access the updated count variable
+    return Center(
+        child: Text(
+      "${c.count}",
+      style: TextStyle(fontSize: 50, color: Colors.green),
+    ));
   }
 }
